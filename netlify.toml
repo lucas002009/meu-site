@@ -1,0 +1,26 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/feedback"
+  to = "/.netlify/functions/feedback"
+  status = 200
+
+# Qualquer /abc123 abre a pagina de avaliacao.
+# Arquivos reais (assets, data, admin) tem precedencia por padrao no Netlify.
+[[redirects]]
+  from = "/:id"
+  to = "/r.html"
+  status = 200
+
+[[headers]]
+  for = "/data/cards.json"
+  [headers.values]
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

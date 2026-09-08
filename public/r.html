@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b3628">
+<title>Como foi sua experiência? — Ouzadia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+<main class="wrap wrap--centro">
+
+  <header class="marca">
+    <h1 class="marca__nome">OUZADIA</h1>
+    <div class="marca__linha"></div>
+    <p class="marca__assinatura" id="assinatura">Joias que contam a sua história</p>
+  </header>
+
+  <!-- Carregando -->
+  <section id="etapa-carregando" class="etapa visivel">
+    <div class="carregando">
+      <div class="girador"></div>
+      Abrindo sua avaliação…
+    </div>
+  </section>
+
+  <!-- Cartao invalido -->
+  <section id="etapa-erro" class="etapa">
+    <div class="painel">
+      <h2 class="titulo">Cartão não encontrado</h2>
+      <p class="subtitulo" id="erro-detalhe">
+        Este cartão não está ativo. Fale com a loja para receber um novo.
+      </p>
+      <a class="botao botao--contorno" id="erro-site" href="https://ouzadia.com">Visitar o site da Ouzadia</a>
+    </div>
+  </section>
+
+  <!-- Passo 1: estrelas -->
+  <section id="etapa-estrelas" class="etapa">
+    <div class="painel">
+      <p class="painel__loja" id="loja-nome">—</p>
+      <p class="painel__cidade" id="loja-cidade">—</p>
+
+      <h2 class="titulo">Como foi sua<br>experiência?</h2>
+      <p class="subtitulo">Sua opinião leva menos de 30 segundos e ajuda muito a nossa equipe.</p>
+
+      <div class="estrelas" id="estrelas" role="radiogroup" aria-label="Nota de 1 a 5 estrelas"></div>
+      <p class="estrelas__legenda" id="legenda">Toque nas estrelas para avaliar</p>
+    </div>
+    <p class="selo">✦ Ouzadia · Avaliação de experiência ✦</p>
+  </section>
+
+  <!-- Passo 2A: nota alta -> Google -->
+  <section id="etapa-google" class="etapa">
+    <div class="painel">
+      <h2 class="titulo">Que alegria! ✨</h2>
+      <p class="subtitulo">
+        Ficamos muito felizes que sua experiência tenha sido especial.
+        Publicar sua avaliação no Google ajuda outras pessoas a nos encontrarem.
+      </p>
+      <a class="botao botao--ouro" id="botao-google" href="#" rel="noopener">
+        Avaliar no Google
+      </a>
+      <button class="botao botao--contorno" id="botao-voltar-google" type="button">Voltar</button>
+      <p class="subtitulo" id="aviso-redirecionar" style="margin:14px 0 0;font-size:12px"></p>
+    </div>
+  </section>
+
+  <!-- Passo 2B: nota baixa -> feedback privado -->
+  <section id="etapa-feedback" class="etapa">
+    <div class="painel">
+      <h2 class="titulo">Queremos melhorar</h2>
+      <p class="subtitulo">
+        Sentimos muito que não tenha sido a experiência que você merecia.
+        Conte o que aconteceu — a gerência lê cada mensagem, e vamos resolver.
+      </p>
+
+      <div class="motivos" id="motivos" role="group" aria-label="O que não saiu como esperado"></div>
+
+      <form id="form-feedback" novalidate>
+        <div class="campo" id="campo-mensagem">
+          <label class="campo__rotulo" for="mensagem">O que aconteceu?</label>
+          <textarea class="campo__area" id="mensagem" name="mensagem"
+                    placeholder="Escreva aqui com suas palavras…" required></textarea>
+          <span class="campo__erro">Escreva pelo menos algumas palavras para podermos ajudar.</span>
+        </div>
+
+        <div class="campo">
+          <label class="campo__rotulo" for="nome">Seu nome (opcional)</label>
+          <input class="campo__entrada" id="nome" name="nome" type="text" autocomplete="name">
+        </div>
+
+        <div class="campo" id="campo-contato">
+          <label class="campo__rotulo" for="contato">WhatsApp ou e-mail para retorno (opcional)</label>
+          <input class="campo__entrada" id="contato" name="contato" type="text" autocomplete="tel">
+          <span class="campo__erro">Confira o número ou o e-mail digitado.</span>
+        </div>
+
+        <button class="botao botao--ouro" id="botao-enviar" type="submit">Enviar para a gerência</button>
+      </form>
+
+      <button class="botao botao--contorno" id="botao-voltar-feedback" type="button">Voltar</button>
+      <p class="subtitulo" style="margin:14px 0 0;font-size:12px">
+        Sua mensagem vai direto para a gerência da loja. Não é publicada em lugar nenhum.
+      </p>
+    </div>
+  </section>
+
+  <!-- Passo 3: obrigado -->
+  <section id="etapa-obrigado" class="etapa">
+    <div class="painel">
+      <h2 class="titulo">Obrigado 🤍</h2>
+      <p class="subtitulo" id="obrigado-texto">
+        Recebemos sua mensagem. A gerência vai analisar e entrar em contato.
+      </p>
+
+      <div class="aviso" id="aviso-envio" style="display:none">
+        Não conseguimos enviar automaticamente. Use um dos botões abaixo para falar com a gente.
+      </div>
+
+      <a class="botao botao--zap" id="botao-whatsapp" href="#" target="_blank" rel="noopener">
+        Falar no WhatsApp
+      </a>
+      <a class="botao botao--contorno" id="botao-email" href="#">Enviar por e-mail</a>
+      <a class="botao botao--contorno" id="botao-google-secundario" href="#" target="_blank" rel="noopener" style="display:none">
+        Avaliar no Google
+      </a>
+    </div>
+    <p class="selo">✦ Ouzadia ✦</p>
+  </section>
+
+</main>
+
+<footer class="rodape" id="rodape">Ouzadia · São Luís — MA</footer>
+
+<script type="module">
+import {
+  carregarRegistro, idDoCartaoNaUrl, acharCartao,
+  linkWhatsapp, linkEmail, enviarFeedback, registrarEvento,
+} from "/assets/app.js";
+
+const LEGENDAS = {
+  1: "Muito abaixo do esperado",
+  2: "Deixou a desejar",
+  3: "Foi razoável",
+  4: "Foi bom",
+  5: "Foi excelente!",
+};
+
+const MOTIVOS = [
+  "Atendimento",
+  "Tempo de espera",
+  "Preço",
+  "Variedade de peças",
+  "Qualidade da peça",
+  "Pós-venda",
+  "Ambiente da loja",
+  "Outro",
+];
+
+const estado = {
+  registro: null,
+  cartao: null,
+  nota: 0,
+  motivos: new Set(),
+};
+
+const $ = (id) => document.getElementById(id);
+
+function mostrarEtapa(nome) {
+  document.querySelectorAll(".etapa").forEach((el) => el.classList.remove("visivel"));
+  $(`etapa-${nome}`).classList.add("visivel");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function falharCom(mensagem) {
+  if (mensagem) $("erro-detalhe").textContent = mensagem;
+  mostrarEtapa("erro");
+}
+
+/* ---------- Estrelas ---------- */
+
+function montarEstrelas() {
+  const caixa = $("estrelas");
+  caixa.innerHTML = "";
+  for (let i = 1; i <= 5; i++) {
+    const botao = document.createElement("button");
+    botao.type = "button";
+    botao.className = "estrela";
+    botao.textContent = "★";
+    botao.dataset.nota = String(i);
+    botao.setAttribute("role", "radio");
+    botao.setAttribute("aria-checked", "false");
+    botao.setAttribute("aria-label", `${i} ${i === 1 ? "estrela" : "estrelas"}`);
+    botao.addEventListener("mouseenter", () => pintar(i));
+    botao.addEventListener("focus", () => pintar(i));
+    botao.addEventListener("click", () => escolherNota(i));
+    caixa.appendChild(botao);
+  }
+  caixa.addEventListener("mouseleave", () => pintar(estado.nota));
+}
+
+function pintar(quantas) {
+  const estrelas = $("estrelas").querySelectorAll(".estrela");
+  estrelas.forEach((el, indice) => {
+    el.classList.toggle("acesa", indice < quantas);
+    el.setAttribute("aria-checked", String(indice + 1 === estado.nota));
+  });
+  $("legenda").textContent = quantas ? LEGENDAS[quantas] : "Toque nas estrelas para avaliar";
+}
+
+function escolherNota(nota) {
+  estado.nota = nota;
+  pintar(nota);
+
+  const escolhida = $("estrelas").querySelector(`[data-nota="${nota}"]`);
+  escolhida.classList.add("pulsa");
+  setTimeout(() => escolhida.classList.remove("pulsa"), 400);
+
+  registrarEvento("avaliacao_nota", { cartao: estado.cartao.id, loja: estado.cartao.loja, nota });
+
+  const minima = Number(estado.registro.config?.notaMinimaParaGoogle ?? 5);
+  setTimeout(() => (nota >= minima ? irParaGoogle() : irParaFeedback()), 380);
+}
+
+/* ---------- Caminho A: Google ---------- */
+
+function irParaGoogle() {
+  const url = estado.cartao.googleReviewUrl;
+  $("botao-google").href = url;
+  mostrarEtapa("google");
+  registrarEvento("encaminhado_google", { cartao: estado.cartao.id, nota: estado.nota });
+
+  const config = estado.registro.config || {};
+  if (config.redirecionarAutomaticamente && !/COLE_AQUI/i.test(url)) {
+    const segundos = Number(config.segundosAteRedirecionar ?? 1);
+    $("aviso-redirecionar").textContent = "Abrindo o Google…";
+    setTimeout(() => { location.href = url; }, Math.max(0, segundos) * 1000);
+  }
+}
+
+/* ---------- Caminho B: feedback privado ---------- */
+
+function montarMotivos() {
+  const caixa = $("motivos");
+  caixa.innerHTML = "";
+  MOTIVOS.forEach((texto) => {
+    const botao = document.createElement("button");
+    botao.type = "button";
+    botao.className = "motivo";
+    botao.textContent = texto;
+    botao.setAttribute("aria-pressed", "false");
+    botao.addEventListener("click", () => {
+      const ativo = estado.motivos.has(texto);
+      if (ativo) estado.motivos.delete(texto);
+      else estado.motivos.add(texto);
+      botao.classList.toggle("ativo", !ativo);
+      botao.setAttribute("aria-pressed", String(!ativo));
+    });
+    caixa.appendChild(botao);
+  });
+}
+
+function irParaFeedback() {
+  mostrarEtapa("feedback");
+  registrarEvento("encaminhado_feedback", { cartao: estado.cartao.id, nota: estado.nota });
+}
+
+function contatoValido(valor) {
+  if (!valor.trim()) return true;
+  const digitos = valor.replace(/\D/g, "");
+  const pareceTelefone = digitos.length >= 10 && digitos.length <= 15;
+  const pareceEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(valor.trim());
+  return pareceTelefone || pareceEmail;
+}
+
+function textoDoFeedback(dados) {
+  const linhas = [
+    `Avaliacao Ouzadia — ${dados.nota} ${dados.nota === 1 ? "estrela" : "estrelas"}`,
+    `Loja: ${dados.loja}`,
+  ];
+  if (dados.motivos.length) linhas.push(`Pontos: ${dados.motivos.join(", ")}`);
+  linhas.push("", dados.mensagem);
+  if (dados.nome) linhas.push("", `Cliente: ${dados.nome}`);
+  if (dados.contato) linhas.push(`Contato: ${dados.contato}`);
+  return linhas.join("\n");
+}
+
+async function enviar(evento) {
+  evento.preventDefault();
+
+  const mensagem = $("mensagem").value.trim();
+  const contato = $("contato").value.trim();
+
+  const mensagemOk = mensagem.length >= 5;
+  const contatoOk = contatoValido(contato);
+  $("campo-mensagem").classList.toggle("campo--invalido", !mensagemOk);
+  $("campo-contato").classList.toggle("campo--invalido", !contatoOk);
+  if (!mensagemOk) { $("mensagem").focus(); return; }
+  if (!contatoOk) { $("contato").focus(); return; }
+
+  const botao = $("botao-enviar");
+  botao.disabled = true;
+  botao.textContent = "Enviando…";
+
+  const dados = {
+    cartao: estado.cartao.id,
+    loja: estado.cartao.loja,
+    cidade: estado.cartao.cidade,
+    vendedor: estado.cartao.vendedor || "",
+    nota: estado.nota,
+    motivos: [...estado.motivos],
+    mensagem,
+    nome: $("nome").value.trim(),
+    contato,
+    em: new Date().toISOString(),
+  };
+
+  const enviado = await enviarFeedback(dados);
+  registrarEvento("feedback_enviado", { cartao: dados.cartao, nota: dados.nota, entregue: enviado });
+
+  const corpo = textoDoFeedback(dados);
+  $("botao-whatsapp").href = linkWhatsapp(estado.cartao.whatsapp, corpo);
+  $("botao-email").href = linkEmail(
+    estado.cartao.email,
+    `Avaliacao ${dados.nota} estrelas — ${dados.loja}`,
+    corpo,
+  );
+  $("aviso-envio").style.display = enviado ? "none" : "block";
+  $("obrigado-texto").textContent = enviado
+    ? "Recebemos sua mensagem. A gerência vai analisar e entrar em contato."
+    : "Sua mensagem está pronta. Escolha por onde prefere enviar para a gerência.";
+
+  botao.disabled = false;
+  botao.textContent = "Enviar para a gerência";
+  mostrarEtapa("obrigado");
+}
+
+/* ---------- Inicio ---------- */
+
+async function iniciar() {
+  let registro;
+  try {
+    registro = await carregarRegistro();
+  } catch (_erro) {
+    falharCom("Não conseguimos carregar sua avaliação agora. Tente novamente em instantes.");
+    return;
+  }
+
+  estado.registro = registro;
+
+  if (registro.marca?.assinatura) $("assinatura").textContent = registro.marca.assinatura;
+  if (registro.marca?.site) $("erro-site").href = registro.marca.site;
+
+  const id = idDoCartaoNaUrl();
+  const cartao = acharCartao(registro, id);
+  if (!cartao) {
+    falharCom(id
+      ? `O cartão "${id}" não está ativo. Fale com a loja para receber um novo.`
+      : "Escaneie o QR Code do seu cartão Ouzadia para avaliar.");
+    return;
+  }
+
+  estado.cartao = cartao;
+  document.title = `Como foi sua experiência? — ${cartao.loja}`;
+  $("loja-nome").textContent = cartao.loja;
+  $("loja-cidade").textContent = [cartao.cidade, cartao.vendedor].filter(Boolean).join(" · ");
+  $("rodape").textContent = `${cartao.loja} · ${cartao.cidade}`;
+
+  // Modo conformidade: oferece o Google tambem para quem deu nota baixa.
+  if (registro.config?.modoConformidade) {
+    const secundario = $("botao-google-secundario");
+    secundario.href = cartao.googleReviewUrl;
+    secundario.style.display = "flex";
+  }
+
+  montarEstrelas();
+  montarMotivos();
+  mostrarEtapa("estrelas");
+  registrarEvento("cartao_aberto", { cartao: cartao.id, loja: cartao.loja });
+}
+
+$("form-feedback").addEventListener("submit", enviar);
+$("botao-voltar-google").addEventListener("click", () => { estado.nota = 0; pintar(0); mostrarEtapa("estrelas"); });
+$("botao-voltar-feedback").addEventListener("click", () => { estado.nota = 0; pintar(0); mostrarEtapa("estrelas"); });
+$("botao-google").addEventListener("click", () =>
+  registrarEvento("clicou_google", { cartao: estado.cartao?.id, nota: estado.nota }));
+
+iniciar();
+</script>
+
+</body>
+</html>

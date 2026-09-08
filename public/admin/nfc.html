@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gravar tag NFC — Ouzadia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+<main class="wrap">
+
+  <header class="marca">
+    <h1 class="marca__nome">OUZADIA</h1>
+    <div class="marca__linha"></div>
+    <p class="marca__assinatura">Gravar tag NFC</p>
+  </header>
+
+  <nav class="abas">
+    <a class="aba" href="/admin">QR Code</a>
+    <a class="aba ativa" href="/admin/nfc">Gravar NFC</a>
+  </nav>
+
+  <div class="painel">
+    <div class="aviso" id="suporte"></div>
+
+    <div class="campo">
+      <label class="campo__rotulo" for="cartao">Cartão a gravar</label>
+      <select class="campo__entrada" id="cartao"></select>
+    </div>
+
+    <div class="campo">
+      <label class="campo__rotulo" for="url">URL que vai na tag</label>
+      <input class="campo__entrada" id="url" type="url" readonly>
+    </div>
+
+    <button class="botao botao--ouro" id="botao-gravar" disabled>Aproximar tag e gravar</button>
+    <button class="botao botao--contorno" id="botao-parar" style="display:none">Cancelar</button>
+
+    <p class="subtitulo" id="status" style="margin:8px 0 0"></p>
+  </div>
+
+  <div class="painel" style="margin-top:20px">
+    <h2 class="titulo" style="font-size:20px">Como gravar</h2>
+    <ol style="line-height:1.75;font-size:14px;color:rgba(246,242,233,0.78);padding-left:20px">
+      <li>Abra esta página no <strong>Chrome do Android</strong>, em uma URL <strong>https</strong>.</li>
+      <li>Ligue o NFC nas configurações do celular.</li>
+      <li>Escolha o cartão da loja na lista acima.</li>
+      <li>Toque em <em>Aproximar tag e gravar</em> e encoste a tag NTAG213/215/216 no verso do aparelho.</li>
+      <li>Teste: bloqueie a tela, desbloqueie e aproxime a tag. O link deve abrir sozinho.</li>
+    </ol>
+    <p class="subtitulo" style="margin-top:14px;font-size:13px">
+      No iPhone ou no computador o Web NFC não existe. Use o app <strong>NFC Tools</strong>
+      (Android ou iOS) e grave um registro do tipo <strong>URL</strong> com o endereço acima.
+    </p>
+  </div>
+
+</main>
+
+<footer class="rodape">Ouzadia · painel interno</footer>
+
+<script type="module">
+import { carregarRegistro, urlDoCartao } from "/assets/app.js";
+
+const $ = (id) => document.getElementById(id);
+const suportado = "NDEFReader" in window;
+let registro = null;
+let controle = null;
+
+function definirStatus(texto, cor) {
+  $("status").textContent = texto;
+  $("status").style.color = cor || "rgba(246,242,233,0.72)";
+}
+
+function atualizarUrl() {
+  const cartao = registro.cartoes.find((c) => c.id === $("cartao").value);
+  $("url").value = cartao ? urlDoCartao(registro, cartao) : "";
+}
+
+async function gravar() {
+  const url = $("url").value;
+  if (!url) return;
+
+  controle = new AbortController();
+  $("botao-gravar").disabled = true;
+  $("botao-gravar").textContent = "Aguardando a tag…";
+  $("botao-parar").style.display = "flex";
+  definirStatus("Encoste a tag NFC no verso do celular.");
+
+  try {
+    const escritor = new NDEFReader();
+    await escritor.write(
+      { records: [{ recordType: "url", data: url }] },
+      { signal: controle.signal },
+    );
+    definirStatus("Tag gravada com sucesso ✓", "#7fd1ae");
+  } catch (erro) {
+    if (erro.name === "AbortError") definirStatus("Gravação cancelada.");
+    else definirStatus(`Não deu certo: ${erro.message}`, "#ff8a80");
+  } finally {
+    controle = null;
+    $("botao-gravar").disabled = false;
+    $("botao-gravar").textContent = "Aproximar tag e gravar";
+    $("botao-parar").style.display = "none";
+  }
+}
+
+async function iniciar() {
+  try {
+    registro = await carregarRegistro();
+  } catch (erro) {
+    $("suporte").textContent = erro.message;
+    return;
+  }
+
+  const lista = $("cartao");
+  registro.cartoes.filter((c) => c.ativo !== false).forEach((cartao) => {
+    const opcao = document.createElement("option");
+    opcao.value = cartao.id;
+    opcao.textContent = `${cartao.loja} — ${cartao.id}`;
+    lista.appendChild(opcao);
+  });
+  atualizarUrl();
+
+  if (suportado) {
+    $("suporte").innerHTML = "Este navegador suporta Web NFC. Você pode gravar as tags direto daqui.";
+    $("botao-gravar").disabled = false;
+  } else {
+    $("suporte").innerHTML =
+      "<strong>Web NFC indisponível neste navegador.</strong> A URL abaixo continua válida — " +
+      "copie e grave com o app NFC Tools.";
+  }
+}
+
+$("cartao").addEventListener("change", atualizarUrl);
+$("botao-gravar").addEventListener("click", gravar);
+$("botao-parar").addEventListener("click", () => controle && controle.abort());
+iniciar();
+</script>
+
+</body>
+</html>

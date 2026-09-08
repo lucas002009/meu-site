@@ -1,0 +1,96 @@
+{
+  "gerado": "Matrizes confirmadas pelo decodificador independente jsQR.",
+  "casos": [
+    {
+      "texto": "https://review.ouzadia.com/abc123",
+      "versao": 3,
+      "tamanho": 29,
+      "mascara": 3,
+      "sha256": "b95c5a87d2dfd8c164e5cb35eac240aaa30131524cc836fe369ecba0e1519a13"
+    },
+    {
+      "texto": "https://review.ouzadia.com/ilha01",
+      "versao": 3,
+      "tamanho": 29,
+      "mascara": 7,
+      "sha256": "11211d1fb2c30bd0357f61ba975021464c241fc9e53591017a56b8df0769bd17"
+    },
+    {
+      "texto": "A",
+      "versao": 1,
+      "tamanho": 21,
+      "mascara": 3,
+      "sha256": "2092585037e9da5651bc5530c31a5a1faebf5717f680e96bd47ad1394a60eeed"
+    },
+    {
+      "texto": "acentuação: São Luís — MA ✦",
+      "versao": 3,
+      "tamanho": 29,
+      "mascara": 7,
+      "sha256": "9255977033f00d1f79db185014f2a6e03eb62f5f72cd5b225e038d4f7cdf5dbe"
+    },
+    {
+      "texto": "https://search.google.com/local/writereview?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4",
+      "versao": 5,
+      "tamanho": 37,
+      "mascara": 4,
+      "sha256": "fcb8e57dd667f9e05d7402bf368a2d95ba5e83e184b8948210a19a4419c3c4f2"
+    },
+    {
+      "texto": "xxxxxxxxxxxxxx",
+      "versao": 1,
+      "tamanho": 21,
+      "mascara": 0,
+      "sha256": "759a539d1bf7615205e1a93849e632b7366078220758ac8415423242de5f454d"
+    },
+    {
+      "texto": "yyyyyyyyyyyyyyyyyyyyyyyyyy",
+      "versao": 2,
+      "tamanho": 25,
+      "mascara": 0,
+      "sha256": "0c2cbc65dbab9989d56ec8c7b2ab595f2ac8fbded3552fec73688f0d0d401985"
+    },
+    {
+      "texto": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+      "versao": 4,
+      "tamanho": 33,
+      "mascara": 5,
+      "sha256": "004581897858272be44016c67e3ffb933b5c19a3110b0cc2dcc2eafdf983795f"
+    },
+    {
+      "texto": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "versao": 6,
+      "tamanho": 41,
+      "mascara": 1,
+      "sha256": "b8e8c456f1c7e7f0bdec74170d8682c6af16d29c6a9c9e27707e1e6f26422f45"
+    },
+    {
+      "texto": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "versao": 7,
+      "tamanho": 45,
+      "mascara": 2,
+      "sha256": "90a7f62ae4af8f9c22de3ac4cff9fde1773247587dba9e499dcdc0f1518ca1c5"
+    },
+    {
+      "texto": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "versao": 8,
+      "tamanho": 49,
+      "mascara": 2,
+      "sha256": "9ddf6cd8a1d5c23c50b23b1edcf2a8cbbeb9dea45214cd80c402626ac4bb5bfb"
+    },
+    {
+      "texto": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "versao": 9,
+      "tamanho": 53,
+      "mascara": 2,
+      "sha256": "f7ec1ff356d149f502d85871dafa754e753e77fd244f1e5482b4d507a3ca0e7d"
+    },
+    {
+      "texto": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+      "versao": 10,
+      "tamanho": 57,
+      "mascara": 1,
+      "sha256": "56f5a588f550167cd024d6fc7d1ce246628b2ffca3a8d1cb3e72fb8cb3de0186"
+    }
+  ]
+}

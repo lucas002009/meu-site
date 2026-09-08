@@ -1,0 +1,15 @@
+{
+  "name": "ouzadia-review",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cartao Ouzadia - QR Code + NFC que leva o cliente para avaliar a experiencia",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

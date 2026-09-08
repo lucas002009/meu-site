@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gerador de cartões — Ouzadia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+<main class="wrap wrap--largo">
+
+  <header class="marca nao-imprime">
+    <h1 class="marca__nome">OUZADIA</h1>
+    <div class="marca__linha"></div>
+    <p class="marca__assinatura">Gerador de cartões · QR Code + NFC</p>
+  </header>
+
+  <nav class="abas nao-imprime">
+    <a class="aba ativa" href="/admin">QR Code</a>
+    <a class="aba" href="/admin/nfc">Gravar NFC</a>
+    <a class="aba" href="/" >Página inicial</a>
+  </nav>
+
+  <div class="aviso nao-imprime" id="aviso-topo">
+    Cada cartão da loja aponta para um link próprio. Imprima o QR Code no verso do cartão
+    e grave a mesma URL na tag NFC. Edite <code>public/data/cards.json</code> para adicionar lojas.
+  </div>
+
+  <div class="nao-imprime" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px">
+    <button class="botao botao--ouro" id="botao-imprimir" style="width:auto;padding:12px 22px">Imprimir folha de QR Codes</button>
+    <button class="botao botao--contorno" id="botao-copiar" style="width:auto;padding:12px 22px">Copiar todas as URLs</button>
+  </div>
+
+  <div id="carregando" class="carregando">
+    <div class="girador"></div>
+    Carregando cartões…
+  </div>
+
+  <section class="grade" id="grade"></section>
+
+  <section class="nao-imprime" style="margin-top:40px">
+    <h2 class="titulo" style="font-size:22px;text-align:left">Cartões cadastrados</h2>
+    <div style="overflow-x:auto">
+      <table class="tabela" id="tabela">
+        <thead>
+          <tr><th>ID</th><th>Loja</th><th>Cidade</th><th>WhatsApp</th><th>Google</th><th>Status</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape nao-imprime">Ouzadia · painel interno</footer>
+
+<script type="module">
+import { carregarRegistro, urlDoCartao, escapar } from "/assets/app.js";
+import { svgDoQr } from "/assets/qr.js";
+
+const $ = (id) => document.getElementById(id);
+
+/** Desenha o QR Code de uma URL e devolve o elemento pronto. */
+function desenharQr(url) {
+  const caixa = document.createElement("div");
+  caixa.className = "cartao-admin__qr";
+
+  try {
+    caixa.innerHTML = svgDoQr(url, { modulo: 6, margem: 2 });
+    const svg = caixa.querySelector("svg");
+    svg.setAttribute("width", "168");
+    svg.setAttribute("height", "168");
+    svg.style.display = "block";
+  } catch (erro) {
+    caixa.style.padding = "24px";
+    caixa.innerHTML =
+      '<span style="color:#8a2b1f;font-size:12px;display:block;width:168px">' +
+      escapar(erro.message) + "</span>";
+  }
+  return caixa;
+}
+
+function montarCartao(registro, cartao) {
+  const url = urlDoCartao(registro, cartao);
+  const bloco = document.createElement("article");
+  bloco.className = "cartao-admin";
+  bloco.appendChild(desenharQr(url));
+
+  const info = document.createElement("div");
+  info.innerHTML =
+    `<p class="cartao-admin__loja">${escapar(cartao.loja)}</p>` +
+    `<p class="cartao-admin__id">${escapar(cartao.id)}</p>` +
+    `<p class="cartao-admin__url">${escapar(url)}</p>`;
+  bloco.appendChild(info);
+
+  const abrir = document.createElement("a");
+  abrir.className = "botao botao--contorno nao-imprime";
+  abrir.style.cssText = "font-size:13px;padding:9px 12px";
+  abrir.href = `/${cartao.id}`;
+  abrir.target = "_blank";
+  abrir.rel = "noopener";
+  abrir.textContent = "Testar cartão";
+  bloco.appendChild(abrir);
+
+  return bloco;
+}
+
+function montarTabela(registro) {
+  const corpo = $("tabela").querySelector("tbody");
+  corpo.innerHTML = "";
+  (registro.cartoes || []).forEach((cartao) => {
+    const googleOk = cartao.googleReviewUrl && !/COLE_AQUI/i.test(cartao.googleReviewUrl);
+    const linha = document.createElement("tr");
+    linha.innerHTML =
+      `<td style="font-family:ui-monospace,monospace;color:#e6c65c">${escapar(cartao.id)}</td>` +
+      `<td>${escapar(cartao.loja)}</td>` +
+      `<td>${escapar(cartao.cidade || "—")}</td>` +
+      `<td>${escapar(cartao.whatsapp || "—")}</td>` +
+      `<td>${googleOk ? "✓ configurado" : "⚠ falta o Place ID"}</td>` +
+      `<td>${cartao.ativo === false ? "inativo" : "ativo"}</td>`;
+    corpo.appendChild(linha);
+  });
+}
+
+async function iniciar() {
+  let registro;
+  try {
+    registro = await carregarRegistro();
+  } catch (erro) {
+    $("carregando").innerHTML = `<p style="color:#ff8a80">${escapar(erro.message)}</p>`;
+    return;
+  }
+
+  const ativos = (registro.cartoes || []).filter((c) => c.ativo !== false);
+  const grade = $("grade");
+  ativos.forEach((cartao) => grade.appendChild(montarCartao(registro, cartao)));
+  montarTabela(registro);
+  $("carregando").style.display = "none";
+
+  const faltaPlaceId = ativos.filter((c) => /COLE_AQUI/i.test(c.googleReviewUrl || ""));
+  if (faltaPlaceId.length) {
+    $("aviso-topo").innerHTML +=
+      `<br><br><strong style="color:#e6c65c">Atenção:</strong> ${faltaPlaceId.length} cartão(ões) ainda ` +
+      "sem o link do Google. Pegue o Place ID da loja em " +
+      '<a href="https://developers.google.com/maps/documentation/places/web-service/place-id" target="_blank" rel="noopener">Place ID Finder</a> ' +
+      "e substitua em <code>public/data/cards.json</code>.";
+  }
+
+  $("botao-copiar").addEventListener("click", async () => {
+    const texto = ativos.map((c) => `${c.id}\t${c.loja}\t${urlDoCartao(registro, c)}`).join("\n");
+    try {
+      await navigator.clipboard.writeText(texto);
+      $("botao-copiar").textContent = "URLs copiadas ✓";
+      setTimeout(() => ($("botao-copiar").textContent = "Copiar todas as URLs"), 2000);
+    } catch {
+      window.prompt("Copie as URLs:", texto);
+    }
+  });
+}
+
+$("botao-imprimir").addEventListener("click", () => window.print());
+iniciar();
+</script>
+
+</body>
+</html>

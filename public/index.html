@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b3628">
+<title>Cartão Ouzadia — avaliação por QR Code e NFC</title>
+<meta name="description" content="O cartao Ouzadia leva o cliente do balcao para a avaliacao em segundos, por QR Code ou NFC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
+<style>
+  .fluxo { display: flex; flex-direction: column; align-items: center; gap: 0; margin: 8px 0 4px; }
+  .fluxo__caixa {
+    border: 1px solid rgba(201,162,39,.4);
+    background: rgba(0,0,0,.2);
+    border-radius: 12px;
+    padding: 14px 18px;
+    text-align: center;
+    min-width: 190px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .fluxo__caixa strong { display: block; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--dourado-claro); margin-bottom: 4px; }
+  .fluxo__seta { color: var(--dourado); font-size: 20px; line-height: 1; padding: 8px 0; }
+  .fluxo__ramos { display: flex; gap: 14px; width: 100%; }
+  .fluxo__ramo { flex: 1; display: flex; flex-direction: column; align-items: center; }
+  .fluxo__caixa--verde { border-color: rgba(127,209,174,.5); }
+  .fluxo__caixa--ambar { border-color: rgba(230,198,92,.5); }
+  .passos { counter-reset: passo; list-style: none; padding: 0; margin: 0; }
+  .passos li {
+    counter-increment: passo;
+    position: relative;
+    padding: 0 0 18px 42px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--texto-suave);
+  }
+  .passos li::before {
+    content: counter(passo);
+    position: absolute; left: 0; top: -2px;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--dourado-suave);
+    border: 1px solid rgba(201,162,39,.5);
+    color: var(--dourado-claro);
+    font-size: 13px; font-weight: 600;
+  }
+  .passos li strong { color: var(--creme); }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <header class="marca">
+    <h1 class="marca__nome">OUZADIA</h1>
+    <div class="marca__linha"></div>
+    <p class="marca__assinatura">Cartão de avaliação · QR Code + NFC</p>
+  </header>
+
+  <section class="painel">
+    <h2 class="titulo">Do balcão para a avaliação<br>em 30 segundos</h2>
+    <p class="subtitulo">
+      O cliente aproxima o celular do cartão ou lê o QR Code. Abre a pergunta,
+      ele toca nas estrelas, e cada nota segue o seu caminho.
+    </p>
+
+    <div class="fluxo">
+      <div class="fluxo__caixa"><strong>Cartão Ouzadia</strong>QR Code + NFC</div>
+      <div class="fluxo__seta">▼</div>
+      <div class="fluxo__caixa"><strong>Link do cartão</strong>review.ouzadia.com/abc123</div>
+      <div class="fluxo__seta">▼</div>
+      <div class="fluxo__caixa">★★★★★<br>Como foi sua experiência?</div>
+      <div class="fluxo__seta">▼</div>
+      <div class="fluxo__ramos">
+        <div class="fluxo__ramo">
+          <div class="fluxo__caixa fluxo__caixa--verde"><strong>5 estrelas</strong>Avaliação no Google</div>
+        </div>
+        <div class="fluxo__ramo">
+          <div class="fluxo__caixa fluxo__caixa--ambar"><strong>1 a 4 estrelas</strong>Feedback privado<br>WhatsApp ou e-mail</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="painel" style="margin-top:20px">
+    <h2 class="titulo" style="font-size:22px">Como colocar de pé</h2>
+    <ol class="passos" style="margin-top:18px">
+      <li><strong>Pegue o Place ID</strong> de cada loja no Place ID Finder do Google e cole em <code>public/data/cards.json</code>.</li>
+      <li><strong>Ajuste o WhatsApp e o e-mail</strong> que recebem o feedback privado de cada loja.</li>
+      <li><strong>Gere os QR Codes</strong> na página de administração e imprima no verso do cartão.</li>
+      <li><strong>Grave as tags NFC</strong> com a mesma URL, pelo Chrome do Android ou pelo app NFC Tools.</li>
+      <li><strong>Teste o cartão</strong> antes de entregar ao time da loja.</li>
+    </ol>
+
+    <a class="botao botao--ouro" href="/admin">Abrir o gerador de cartões</a>
+    <a class="botao botao--contorno" href="/abc123">Ver um cartão de exemplo</a>
+  </section>
+
+  <section class="painel" style="margin-top:20px">
+    <h2 class="titulo" style="font-size:22px">Sobre as regras do Google</h2>
+    <p class="subtitulo" style="text-align:left;margin-bottom:0">
+      O Google proíbe filtrar quem pode avaliar com base na nota prevista, prática conhecida
+      como <em>review gating</em>. Para operar dentro da política, abra
+      <code>public/data/cards.json</code> e mude <code>modoConformidade</code> para <code>true</code>:
+      o convite para avaliar no Google passa a aparecer também para quem deu nota baixa,
+      e o canal privado continua disponível para resolver o problema.
+    </p>
+  </section>
+
+</main>
+
+<footer class="rodape">Ouzadia · São Luís — MA</footer>
+
+</body>
+</html>

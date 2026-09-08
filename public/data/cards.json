@@ -1,0 +1,47 @@
+{
+  "marca": {
+    "nome": "Ouzadia",
+    "assinatura": "Joias que contam a sua história",
+    "site": "https://ouzadia.com",
+    "dominioAvaliacao": "https://review.ouzadia.com"
+  },
+  "config": {
+    "notaMinimaParaGoogle": 5,
+    "modoConformidade": false,
+    "redirecionarAutomaticamente": true,
+    "segundosAteRedirecionar": 1,
+    "webhookFeedback": ""
+  },
+  "cartoes": [
+    {
+      "id": "abc123",
+      "ativo": true,
+      "loja": "Ouzadia Shopping da Ilha",
+      "cidade": "São Luís - MA",
+      "vendedor": "",
+      "googleReviewUrl": "https://search.google.com/local/writereview?placeid=COLE_AQUI_O_PLACE_ID",
+      "whatsapp": "5598900000000",
+      "email": "ouzadiacontato.lucas@gmail.com"
+    },
+    {
+      "id": "ilha01",
+      "ativo": true,
+      "loja": "Ouzadia Shopping da Ilha",
+      "cidade": "São Luís - MA",
+      "vendedor": "Balcão 1",
+      "googleReviewUrl": "https://search.google.com/local/writereview?placeid=COLE_AQUI_O_PLACE_ID",
+      "whatsapp": "5598900000000",
+      "email": "ouzadiacontato.lucas@gmail.com"
+    },
+    {
+      "id": "rio01",
+      "ativo": true,
+      "loja": "Ouzadia Rio Anil",
+      "cidade": "São Luís - MA",
+      "vendedor": "",
+      "googleReviewUrl": "https://search.google.com/local/writereview?placeid=COLE_AQUI_O_PLACE_ID",
+      "whatsapp": "5598900000000",
+      "email": "ouzadiacontato.lucas@gmail.com"
+    }
+  ]
+}
