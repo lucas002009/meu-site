@@ -1,0 +1,376 @@
+/* ==========================================================
+   Ouzadia — folha de avaliação
+   Aparência da folha de avaliação do Google: fundo claro,
+   Roboto, estrelas âmbar, botão azul. Sem a marca do Google:
+   quem assina a página é a loja, e o cliente precisa saber
+   em que página está.
+   ========================================================== */
+
+:root {
+  color-scheme: light;
+
+  --superficie: #ffffff;
+  --fundo: #f1f3f4;
+  --linha: #dadce0;
+  --linha-suave: #e8eaed;
+  --texto: #202124;
+  --texto-fraco: #5f6368;
+  --texto-tenue: #80868b;
+  --azul: #1a73e8;
+  --azul-escuro: #1765cc;
+  --azul-vidro: rgba(26, 115, 232, 0.08);
+  --ambar: #fbbc04;
+  --estrela-vazia: #dadce0;
+  --erro: #d93025;
+  --zap: #1f9d55;
+  --marca: #0e4433;
+  --marca-texto: #f6f2e9;
+  --sombra: 0 1px 3px rgba(60, 64, 67, 0.18), 0 4px 12px rgba(60, 64, 67, 0.1);
+  --raio: 12px;
+  --roboto: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --superficie: #202124;
+    --fundo: #17181a;
+    --linha: #3c4043;
+    --linha-suave: #2e3134;
+    --texto: #e8eaed;
+    --texto-fraco: #9aa0a6;
+    --texto-tenue: #80868b;
+    --azul: #8ab4f8;
+    --azul-escuro: #a6c8fa;
+    --azul-vidro: rgba(138, 180, 248, 0.12);
+    --estrela-vazia: #5f6368;
+    --erro: #f28b82;
+    --marca: #7fd1ae;
+    --marca-texto: #0b2f24;
+    --sombra: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --superficie: #202124;
+  --fundo: #17181a;
+  --linha: #3c4043;
+  --linha-suave: #2e3134;
+  --texto: #e8eaed;
+  --texto-fraco: #9aa0a6;
+  --texto-tenue: #80868b;
+  --azul: #8ab4f8;
+  --azul-escuro: #a6c8fa;
+  --azul-vidro: rgba(138, 180, 248, 0.12);
+  --estrela-vazia: #5f6368;
+  --erro: #f28b82;
+  --marca: #7fd1ae;
+  --marca-texto: #0b2f24;
+  --sombra: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--fundo); }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--roboto);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px 28px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Folha ---------- */
+
+.folha {
+  width: 100%;
+  max-width: 420px;
+  background: var(--superficie);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 24px 22px 22px;
+}
+
+/* ---------- Cabeçalho da loja ---------- */
+
+.negocio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--linha-suave);
+  margin-bottom: 20px;
+}
+
+.negocio__selo {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--marca);
+  color: var(--marca-texto);
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.negocio__texto { min-width: 0; }
+
+.negocio__nome {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--texto);
+  line-height: 1.32;
+}
+
+.negocio__local {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  color: var(--texto-fraco);
+}
+
+/* ---------- Pergunta ---------- */
+
+.pergunta {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.32;
+  text-wrap: balance;
+  color: var(--texto);
+}
+
+.apoio {
+  margin: 0 0 20px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--texto-fraco);
+}
+
+/* ---------- Estrelas ---------- */
+
+.estrelas {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.estrela {
+  background: none;
+  border: 0;
+  padding: 4px;
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.12s ease;
+}
+
+.estrela svg { width: 40px; height: 40px; display: block; }
+.estrela path { fill: var(--estrela-vazia); transition: fill 0.12s ease; }
+.estrela.acesa path { fill: var(--ambar); }
+.estrela:hover { transform: scale(1.08); }
+.estrela.pulsa { animation: pulsa 0.34s ease; }
+
+@keyframes pulsa {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.22); }
+  100% { transform: scale(1); }
+}
+
+.legenda {
+  text-align: center;
+  margin: 0;
+  font-size: 13px;
+  color: var(--texto-fraco);
+  min-height: 20px;
+}
+
+/* ---------- Detalhe (nota baixa) ---------- */
+
+.detalhe { margin-top: 20px; }
+
+.detalhe__aviso {
+  background: var(--azul-vidro);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--texto-fraco);
+  margin: 0 0 16px;
+}
+
+.motivos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.motivo {
+  border: 1px solid var(--linha);
+  background: transparent;
+  color: var(--texto-fraco);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-family: var(--roboto);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.motivo[aria-pressed="true"] {
+  background: var(--azul-vidro);
+  border-color: var(--azul);
+  color: var(--azul);
+}
+
+.campo { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+
+.campo__rotulo { font-size: 12px; color: var(--texto-fraco); }
+
+.campo__entrada,
+.campo__area {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid var(--linha);
+  border-radius: 8px;
+  background: var(--superficie);
+  color: var(--texto);
+  font-family: var(--roboto);
+  font-size: 14.5px;
+}
+
+.campo__area { min-height: 104px; resize: vertical; line-height: 1.5; }
+
+.campo__entrada::placeholder,
+.campo__area::placeholder { color: var(--texto-tenue); }
+
+.campo__entrada:focus,
+.campo__area:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 1px var(--azul);
+}
+
+.campo__erro { font-size: 12px; color: var(--erro); display: none; }
+
+.campo--erro .campo__erro { display: block; }
+.campo--erro .campo__entrada,
+.campo--erro .campo__area { border-color: var(--erro); }
+.campo--erro .campo__entrada:focus,
+.campo--erro .campo__area:focus { box-shadow: 0 0 0 1px var(--erro); }
+
+/* ---------- Botões ---------- */
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 24px;
+  font-family: var(--roboto);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.12s ease, box-shadow 0.12s ease;
+}
+
+.botao--azul { background: var(--azul); color: var(--superficie); }
+.botao--azul:hover { background: var(--azul-escuro); }
+
+.botao--texto { background: transparent; color: var(--azul); padding: 10px 16px; }
+.botao--texto:hover { background: var(--azul-vidro); }
+
+.botao--zap { background: var(--zap); color: #fff; }
+.botao--zap:hover { background: #1a874a; }
+
+.botao--largo { width: 100%; padding: 12px 20px; }
+
+.botao--contorno {
+  background: transparent;
+  border: 1px solid var(--linha);
+  color: var(--azul);
+}
+.botao--contorno:hover { background: var(--azul-vidro); }
+
+.pilha { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+
+.botao[disabled] { opacity: 0.55; cursor: not-allowed; }
+
+/* ---------- Confirmação ---------- */
+
+.marca-final {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--linha-suave);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-tenue);
+}
+
+/* ---------- Etapas ---------- */
+
+.etapa { display: none; }
+.etapa.ativa { display: block; }
+
+.some { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .estrela, .motivo, .botao, .estrela path { transition: none; }
+  .estrela.pulsa { animation: none; }
+}
+
+/* ---------- Carregando e erro ---------- */
+
+.carregando {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--texto-fraco);
+}
+
+.girador {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto 12px;
+  border: 2px solid var(--linha);
+  border-top-color: var(--azul);
+  border-radius: 50%;
+  animation: gira 0.8s linear infinite;
+}
+
+@keyframes gira { to { transform: rotate(360deg); } }

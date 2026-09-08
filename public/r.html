@@ -4,145 +4,144 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0b3628">
-<title>Como foi sua experiência? — Ouzadia</title>
+<meta name="color-scheme" content="light dark">
+<title>Avalie sua experiência</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="/assets/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/review.css">
 </head>
 <body>
 
-<main class="wrap wrap--centro">
-
-  <header class="marca">
-    <h1 class="marca__nome">OUZADIA</h1>
-    <div class="marca__linha"></div>
-    <p class="marca__assinatura" id="assinatura">Joias que contam a sua história</p>
-  </header>
+<main class="folha">
 
   <!-- Carregando -->
-  <section id="etapa-carregando" class="etapa visivel">
+  <section class="etapa ativa" id="etapa-carregando">
     <div class="carregando">
       <div class="girador"></div>
       Abrindo sua avaliação…
     </div>
   </section>
 
-  <!-- Cartao invalido -->
-  <section id="etapa-erro" class="etapa">
-    <div class="painel">
-      <h2 class="titulo">Cartão não encontrado</h2>
-      <p class="subtitulo" id="erro-detalhe">
-        Este cartão não está ativo. Fale com a loja para receber um novo.
-      </p>
-      <a class="botao botao--contorno" id="erro-site" href="https://ouzadia.com">Visitar o site da Ouzadia</a>
-    </div>
+  <!-- Cartão inválido -->
+  <section class="etapa" id="etapa-erro">
+    <h1 class="pergunta">Cartão não encontrado</h1>
+    <p class="apoio" id="erro-detalhe">
+      Este cartão não está ativo. Fale com a loja para receber um novo.
+    </p>
+    <a class="botao botao--contorno botao--largo" id="erro-site" href="https://ouzadia.com">
+      Visitar o site da Ouzadia
+    </a>
   </section>
 
-  <!-- Passo 1: estrelas -->
-  <section id="etapa-estrelas" class="etapa">
-    <div class="painel">
-      <p class="painel__loja" id="loja-nome">—</p>
-      <p class="painel__cidade" id="loja-cidade">—</p>
+  <!-- Avaliação -->
+  <section class="etapa" id="etapa-avaliacao">
 
-      <h2 class="titulo">Como foi sua<br>experiência?</h2>
-      <p class="subtitulo">Sua opinião leva menos de 30 segundos e ajuda muito a nossa equipe.</p>
-
-      <div class="estrelas" id="estrelas" role="radiogroup" aria-label="Nota de 1 a 5 estrelas"></div>
-      <p class="estrelas__legenda" id="legenda">Toque nas estrelas para avaliar</p>
+    <div class="negocio">
+      <div class="negocio__selo" id="selo" aria-hidden="true">O</div>
+      <div class="negocio__texto">
+        <p class="negocio__nome" id="loja-nome">—</p>
+        <p class="negocio__local" id="loja-local">—</p>
+      </div>
     </div>
-    <p class="selo">✦ Ouzadia · Avaliação de experiência ✦</p>
-  </section>
 
-  <!-- Passo 2A: nota alta -> Google -->
-  <section id="etapa-google" class="etapa">
-    <div class="painel">
-      <h2 class="titulo">Que alegria! ✨</h2>
-      <p class="subtitulo">
-        Ficamos muito felizes que sua experiência tenha sido especial.
-        Publicar sua avaliação no Google ajuda outras pessoas a nos encontrarem.
-      </p>
-      <a class="botao botao--ouro" id="botao-google" href="#" rel="noopener">
-        Avaliar no Google
-      </a>
-      <button class="botao botao--contorno" id="botao-voltar-google" type="button">Voltar</button>
-      <p class="subtitulo" id="aviso-redirecionar" style="margin:14px 0 0;font-size:12px"></p>
-    </div>
-  </section>
+    <h1 class="pergunta">Avalie sua experiência</h1>
+    <p class="apoio">Sua opinião ajuda outras pessoas e a nossa equipe.</p>
 
-  <!-- Passo 2B: nota baixa -> feedback privado -->
-  <section id="etapa-feedback" class="etapa">
-    <div class="painel">
-      <h2 class="titulo">Queremos melhorar</h2>
-      <p class="subtitulo">
-        Sentimos muito que não tenha sido a experiência que você merecia.
-        Conte o que aconteceu — a gerência lê cada mensagem, e vamos resolver.
+    <div class="estrelas" id="estrelas" role="radiogroup" aria-label="Nota de 1 a 5 estrelas"></div>
+    <p class="legenda" id="legenda">Toque nas estrelas para avaliar</p>
+
+    <!-- Aparece só nas notas baixas -->
+    <div class="detalhe some" id="detalhe">
+      <p class="detalhe__aviso">
+        Sentimos muito. Conte o que aconteceu: sua mensagem vai direto para a
+        gerência da loja e não é publicada em lugar nenhum.
       </p>
 
       <div class="motivos" id="motivos" role="group" aria-label="O que não saiu como esperado"></div>
 
-      <form id="form-feedback" novalidate>
+      <form id="formulario" novalidate>
         <div class="campo" id="campo-mensagem">
           <label class="campo__rotulo" for="mensagem">O que aconteceu?</label>
-          <textarea class="campo__area" id="mensagem" name="mensagem"
-                    placeholder="Escreva aqui com suas palavras…" required></textarea>
+          <textarea class="campo__area" id="mensagem"
+                    placeholder="Compartilhe os detalhes da sua experiência"></textarea>
           <span class="campo__erro">Escreva pelo menos algumas palavras para podermos ajudar.</span>
         </div>
 
         <div class="campo">
           <label class="campo__rotulo" for="nome">Seu nome (opcional)</label>
-          <input class="campo__entrada" id="nome" name="nome" type="text" autocomplete="name">
+          <input class="campo__entrada" id="nome" type="text" autocomplete="name">
         </div>
 
         <div class="campo" id="campo-contato">
           <label class="campo__rotulo" for="contato">WhatsApp ou e-mail para retorno (opcional)</label>
-          <input class="campo__entrada" id="contato" name="contato" type="text" autocomplete="tel">
+          <input class="campo__entrada" id="contato" type="text" autocomplete="tel">
           <span class="campo__erro">Confira o número ou o e-mail digitado.</span>
         </div>
 
-        <button class="botao botao--ouro" id="botao-enviar" type="submit">Enviar para a gerência</button>
+        <div class="acoes">
+          <button class="botao botao--texto" id="botao-cancelar" type="button">Cancelar</button>
+          <button class="botao botao--azul" id="botao-enviar" type="submit">Enviar</button>
+        </div>
       </form>
-
-      <button class="botao botao--contorno" id="botao-voltar-feedback" type="button">Voltar</button>
-      <p class="subtitulo" style="margin:14px 0 0;font-size:12px">
-        Sua mensagem vai direto para a gerência da loja. Não é publicada em lugar nenhum.
-      </p>
     </div>
-  </section>
 
-  <!-- Passo 3: obrigado -->
-  <section id="etapa-obrigado" class="etapa">
-    <div class="painel">
-      <h2 class="titulo">Obrigado 🤍</h2>
-      <p class="subtitulo" id="obrigado-texto">
-        Recebemos sua mensagem. A gerência vai analisar e entrar em contato.
+    <!-- Só quando o Place ID ainda é o de exemplo -->
+    <div class="pilha some" id="google-manual">
+      <p class="detalhe__aviso" style="margin:0">
+        O link de avaliação desta loja ainda não foi configurado. Assim que o
+        Place ID entrar no registro, esta tela abre o Google sozinha.
       </p>
-
-      <div class="aviso" id="aviso-envio" style="display:none">
-        Não conseguimos enviar automaticamente. Use um dos botões abaixo para falar com a gente.
-      </div>
-
-      <a class="botao botao--zap" id="botao-whatsapp" href="#" target="_blank" rel="noopener">
-        Falar no WhatsApp
-      </a>
-      <a class="botao botao--contorno" id="botao-email" href="#">Enviar por e-mail</a>
-      <a class="botao botao--contorno" id="botao-google-secundario" href="#" target="_blank" rel="noopener" style="display:none">
+      <a class="botao botao--azul botao--largo" id="botao-google" href="#" rel="noopener">
         Avaliar no Google
       </a>
     </div>
-    <p class="selo">✦ Ouzadia ✦</p>
+
+    <p class="marca-final" id="marca-final">Ouzadia</p>
+  </section>
+
+  <!-- Obrigado -->
+  <section class="etapa" id="etapa-obrigado">
+    <h1 class="pergunta">Obrigado pelo retorno</h1>
+    <p class="apoio" id="obrigado-texto">
+      Recebemos sua mensagem. A gerência vai analisar e entrar em contato.
+    </p>
+
+    <p class="detalhe__aviso some" id="aviso-envio">
+      Não conseguimos enviar automaticamente. Use um dos botões abaixo para
+      falar com a gente.
+    </p>
+
+    <div class="pilha">
+      <a class="botao botao--zap botao--largo" id="botao-zap" href="#" target="_blank" rel="noopener">
+        Falar no WhatsApp
+      </a>
+      <a class="botao botao--contorno botao--largo" id="botao-email" href="#">
+        Enviar por e-mail
+      </a>
+      <a class="botao botao--contorno botao--largo some" id="botao-google-secundario"
+         href="#" target="_blank" rel="noopener">
+        Avaliar no Google
+      </a>
+    </div>
+
+    <p class="marca-final">Ouzadia</p>
   </section>
 
 </main>
-
-<footer class="rodape" id="rodape">Ouzadia · São Luís — MA</footer>
 
 <script type="module">
 import {
   carregarRegistro, idDoCartaoNaUrl, acharCartao,
   linkWhatsapp, linkEmail, enviarFeedback, registrarEvento,
 } from "/assets/app.js";
+
+/* Ícones de estrela do Material: contorno quando vazia, cheia quando acesa. */
+const ESTRELA_VAZIA =
+  "M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24z" +
+  "M12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z";
+const ESTRELA_CHEIA =
+  "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z";
 
 const LEGENDAS = {
   1: "Muito abaixo do esperado",
@@ -153,28 +152,16 @@ const LEGENDAS = {
 };
 
 const MOTIVOS = [
-  "Atendimento",
-  "Tempo de espera",
-  "Preço",
-  "Variedade de peças",
-  "Qualidade da peça",
-  "Pós-venda",
-  "Ambiente da loja",
-  "Outro",
+  "Atendimento", "Tempo de espera", "Preço", "Variedade de peças",
+  "Qualidade da peça", "Pós-venda", "Ambiente da loja", "Outro",
 ];
 
-const estado = {
-  registro: null,
-  cartao: null,
-  nota: 0,
-  motivos: new Set(),
-};
-
+const estado = { registro: null, cartao: null, nota: 0, motivos: new Set() };
 const $ = (id) => document.getElementById(id);
 
 function mostrarEtapa(nome) {
-  document.querySelectorAll(".etapa").forEach((el) => el.classList.remove("visivel"));
-  $(`etapa-${nome}`).classList.add("visivel");
+  document.querySelectorAll(".etapa").forEach((e) => e.classList.remove("ativa"));
+  $(`etapa-${nome}`).classList.add("ativa");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -182,6 +169,9 @@ function falharCom(mensagem) {
   if (mensagem) $("erro-detalhe").textContent = mensagem;
   mostrarEtapa("erro");
 }
+
+const linkDoGoogleEstaPronto = (cartao) =>
+  Boolean(cartao.googleReviewUrl) && !/COLE_AQUI/i.test(cartao.googleReviewUrl);
 
 /* ---------- Estrelas ---------- */
 
@@ -192,11 +182,12 @@ function montarEstrelas() {
     const botao = document.createElement("button");
     botao.type = "button";
     botao.className = "estrela";
-    botao.textContent = "★";
     botao.dataset.nota = String(i);
     botao.setAttribute("role", "radio");
     botao.setAttribute("aria-checked", "false");
     botao.setAttribute("aria-label", `${i} ${i === 1 ? "estrela" : "estrelas"}`);
+    botao.innerHTML =
+      `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ESTRELA_VAZIA}"/></svg>`;
     botao.addEventListener("mouseenter", () => pintar(i));
     botao.addEventListener("focus", () => pintar(i));
     botao.addEventListener("click", () => escolherNota(i));
@@ -206,9 +197,10 @@ function montarEstrelas() {
 }
 
 function pintar(quantas) {
-  const estrelas = $("estrelas").querySelectorAll(".estrela");
-  estrelas.forEach((el, indice) => {
-    el.classList.toggle("acesa", indice < quantas);
+  $("estrelas").querySelectorAll(".estrela").forEach((el, indice) => {
+    const acesa = indice < quantas;
+    el.classList.toggle("acesa", acesa);
+    el.querySelector("path").setAttribute("d", acesa ? ESTRELA_CHEIA : ESTRELA_VAZIA);
     el.setAttribute("aria-checked", String(indice + 1 === estado.nota));
   });
   $("legenda").textContent = quantas ? LEGENDAS[quantas] : "Toque nas estrelas para avaliar";
@@ -217,34 +209,35 @@ function pintar(quantas) {
 function escolherNota(nota) {
   estado.nota = nota;
   pintar(nota);
-
-  const escolhida = $("estrelas").querySelector(`[data-nota="${nota}"]`);
-  escolhida.classList.add("pulsa");
-  setTimeout(() => escolhida.classList.remove("pulsa"), 400);
-
   registrarEvento("avaliacao_nota", { cartao: estado.cartao.id, loja: estado.cartao.loja, nota });
 
   const minima = Number(estado.registro.config?.notaMinimaParaGoogle ?? 5);
-  setTimeout(() => (nota >= minima ? irParaGoogle() : irParaFeedback()), 380);
-}
 
-/* ---------- Caminho A: Google ---------- */
-
-function irParaGoogle() {
-  const url = estado.cartao.googleReviewUrl;
-  $("botao-google").href = url;
-  mostrarEtapa("google");
-  registrarEvento("encaminhado_google", { cartao: estado.cartao.id, nota: estado.nota });
-
-  const config = estado.registro.config || {};
-  if (config.redirecionarAutomaticamente && !/COLE_AQUI/i.test(url)) {
-    const segundos = Number(config.segundosAteRedirecionar ?? 1);
-    $("aviso-redirecionar").textContent = "Abrindo o Google…";
-    setTimeout(() => { location.href = url; }, Math.max(0, segundos) * 1000);
+  if (nota >= minima) {
+    // Sem tela intermediária e sem espera: o Google abre na hora.
+    registrarEvento("encaminhado_google", { cartao: estado.cartao.id, nota });
+    if (linkDoGoogleEstaPronto(estado.cartao)) {
+      location.href = estado.cartao.googleReviewUrl;
+      return;
+    }
+    // Place ID ainda não configurado: mostra o botão em vez de quebrar.
+    $("detalhe").classList.add("some");
+    $("google-manual").classList.remove("some");
+    $("google-manual").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    return;
   }
+
+  const alvo = $("estrelas").querySelector(`[data-nota="${nota}"]`);
+  alvo.classList.add("pulsa");
+  setTimeout(() => alvo.classList.remove("pulsa"), 340);
+
+  $("google-manual").classList.add("some");
+  $("detalhe").classList.remove("some");
+  $("detalhe").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  registrarEvento("encaminhado_feedback", { cartao: estado.cartao.id, nota });
 }
 
-/* ---------- Caminho B: feedback privado ---------- */
+/* ---------- Motivos ---------- */
 
 function montarMotivos() {
   const caixa = $("motivos");
@@ -259,17 +252,13 @@ function montarMotivos() {
       const ativo = estado.motivos.has(texto);
       if (ativo) estado.motivos.delete(texto);
       else estado.motivos.add(texto);
-      botao.classList.toggle("ativo", !ativo);
       botao.setAttribute("aria-pressed", String(!ativo));
     });
     caixa.appendChild(botao);
   });
 }
 
-function irParaFeedback() {
-  mostrarEtapa("feedback");
-  registrarEvento("encaminhado_feedback", { cartao: estado.cartao.id, nota: estado.nota });
-}
+/* ---------- Envio ---------- */
 
 function contatoValido(valor) {
   if (!valor.trim()) return true;
@@ -291,16 +280,28 @@ function textoDoFeedback(dados) {
   return linhas.join("\n");
 }
 
+function limpar() {
+  estado.nota = 0;
+  estado.motivos.clear();
+  pintar(0);
+  $("formulario").reset();
+  $("campo-mensagem").classList.remove("campo--erro");
+  $("campo-contato").classList.remove("campo--erro");
+  $("motivos").querySelectorAll(".motivo").forEach((b) => b.setAttribute("aria-pressed", "false"));
+  $("detalhe").classList.add("some");
+  $("google-manual").classList.add("some");
+}
+
 async function enviar(evento) {
   evento.preventDefault();
 
   const mensagem = $("mensagem").value.trim();
   const contato = $("contato").value.trim();
-
   const mensagemOk = mensagem.length >= 5;
   const contatoOk = contatoValido(contato);
-  $("campo-mensagem").classList.toggle("campo--invalido", !mensagemOk);
-  $("campo-contato").classList.toggle("campo--invalido", !contatoOk);
+
+  $("campo-mensagem").classList.toggle("campo--erro", !mensagemOk);
+  $("campo-contato").classList.toggle("campo--erro", !contatoOk);
   if (!mensagemOk) { $("mensagem").focus(); return; }
   if (!contatoOk) { $("contato").focus(); return; }
 
@@ -325,23 +326,23 @@ async function enviar(evento) {
   registrarEvento("feedback_enviado", { cartao: dados.cartao, nota: dados.nota, entregue: enviado });
 
   const corpo = textoDoFeedback(dados);
-  $("botao-whatsapp").href = linkWhatsapp(estado.cartao.whatsapp, corpo);
+  $("botao-zap").href = linkWhatsapp(estado.cartao.whatsapp, corpo);
   $("botao-email").href = linkEmail(
     estado.cartao.email,
     `Avaliacao ${dados.nota} estrelas — ${dados.loja}`,
     corpo,
   );
-  $("aviso-envio").style.display = enviado ? "none" : "block";
+  $("aviso-envio").classList.toggle("some", enviado);
   $("obrigado-texto").textContent = enviado
     ? "Recebemos sua mensagem. A gerência vai analisar e entrar em contato."
     : "Sua mensagem está pronta. Escolha por onde prefere enviar para a gerência.";
 
   botao.disabled = false;
-  botao.textContent = "Enviar para a gerência";
+  botao.textContent = "Enviar";
   mostrarEtapa("obrigado");
 }
 
-/* ---------- Inicio ---------- */
+/* ---------- Início ---------- */
 
 async function iniciar() {
   let registro;
@@ -353,8 +354,6 @@ async function iniciar() {
   }
 
   estado.registro = registro;
-
-  if (registro.marca?.assinatura) $("assinatura").textContent = registro.marca.assinatura;
   if (registro.marca?.site) $("erro-site").href = registro.marca.site;
 
   const id = idDoCartaoNaUrl();
@@ -367,27 +366,29 @@ async function iniciar() {
   }
 
   estado.cartao = cartao;
-  document.title = `Como foi sua experiência? — ${cartao.loja}`;
+  document.title = `Avalie sua experiência — ${cartao.loja}`;
   $("loja-nome").textContent = cartao.loja;
-  $("loja-cidade").textContent = [cartao.cidade, cartao.vendedor].filter(Boolean).join(" · ");
-  $("rodape").textContent = `${cartao.loja} · ${cartao.cidade}`;
+  $("loja-local").textContent = [cartao.cidade, cartao.vendedor].filter(Boolean).join(" · ");
+  $("selo").textContent = (registro.marca?.nome || cartao.loja).trim().charAt(0).toUpperCase();
+  const nomeDaMarca = registro.marca?.nome || "Ouzadia";
+  document.querySelectorAll(".marca-final").forEach((el) => { el.textContent = nomeDaMarca; });
 
-  // Modo conformidade: oferece o Google tambem para quem deu nota baixa.
-  if (registro.config?.modoConformidade) {
+  if (registro.config?.modoConformidade && linkDoGoogleEstaPronto(cartao)) {
     const secundario = $("botao-google-secundario");
     secundario.href = cartao.googleReviewUrl;
-    secundario.style.display = "flex";
+    secundario.classList.remove("some");
   }
+
+  $("botao-google").href = cartao.googleReviewUrl;
 
   montarEstrelas();
   montarMotivos();
-  mostrarEtapa("estrelas");
+  mostrarEtapa("avaliacao");
   registrarEvento("cartao_aberto", { cartao: cartao.id, loja: cartao.loja });
 }
 
-$("form-feedback").addEventListener("submit", enviar);
-$("botao-voltar-google").addEventListener("click", () => { estado.nota = 0; pintar(0); mostrarEtapa("estrelas"); });
-$("botao-voltar-feedback").addEventListener("click", () => { estado.nota = 0; pintar(0); mostrarEtapa("estrelas"); });
+$("formulario").addEventListener("submit", enviar);
+$("botao-cancelar").addEventListener("click", limpar);
 $("botao-google").addEventListener("click", () =>
   registrarEvento("clicou_google", { cartao: estado.cartao?.id, nota: estado.nota }));
 

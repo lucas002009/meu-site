@@ -56,8 +56,6 @@ Tudo vive em `public/data/cards.json`. Não há banco de dados.
   "config": {
     "notaMinimaParaGoogle": 5,
     "modoConformidade": false,
-    "redirecionarAutomaticamente": true,
-    "segundosAteRedirecionar": 1,
     "webhookFeedback": ""
   },
   "cartoes": [
@@ -81,9 +79,10 @@ O que cada chave faz:
   o QR Code e mais fácil a leitura.
 - **`notaMinimaParaGoogle`** é a nota a partir da qual o cliente é levado
   ao Google. Em 5, só quem deu cinco estrelas segue para lá.
-- **`redirecionarAutomaticamente`** manda o cliente direto para o Google
-  sem esperar o clique. O redirecionamento é bloqueado enquanto o Place ID
-  ainda for o de exemplo, então dá para testar sem sustos.
+- Quem alcança essa nota vai para o Google **na hora**, sem tela
+  intermediária e sem clique extra. Enquanto o Place ID for o de exemplo, o
+  redirecionamento fica bloqueado e a página mostra um botão, então dá para
+  testar sem sustos.
 - **`ativo: false`** desliga um cartão perdido ou roubado sem apagar o
   histórico.
 - **`whatsapp`** vai com DDI e DDD, só números: `5598991234567`.

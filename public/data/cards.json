@@ -8,8 +8,6 @@
   "config": {
     "notaMinimaParaGoogle": 5,
     "modoConformidade": false,
-    "redirecionarAutomaticamente": true,
-    "segundosAteRedirecionar": 1,
     "webhookFeedback": ""
   },
   "cartoes": [
