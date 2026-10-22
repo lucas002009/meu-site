@@ -3,7 +3,8 @@
    Carrega o registro de cartoes e expoe utilitarios.
    ========================================================== */
 
-export const CAMINHO_REGISTRO = "/data/cards.json";
+// Relativo a este arquivo: funciona na raiz do dominio e em subpasta (GitHub Pages).
+export const CAMINHO_REGISTRO = new URL("../data/cards.json", import.meta.url).href;
 
 let registroCache = null;
 
