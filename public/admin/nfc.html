@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="/assets/styles.css">
+<link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
 
@@ -21,8 +21,8 @@
   </header>
 
   <nav class="abas">
-    <a class="aba" href="/admin">QR Code</a>
-    <a class="aba ativa" href="/admin/nfc">Gravar NFC</a>
+    <a class="aba" href="../admin/">QR Code</a>
+    <a class="aba ativa" href="../admin/nfc">Gravar NFC</a>
   </nav>
 
   <div class="painel">
@@ -64,7 +64,7 @@
 <footer class="rodape">Ouzadia · painel interno</footer>
 
 <script type="module">
-import { carregarRegistro, urlDoCartao } from "/assets/app.js";
+import { carregarRegistro, urlDoCartao } from "../assets/app.js";
 
 const $ = (id) => document.getElementById(id);
 const suportado = "NDEFReader" in window;

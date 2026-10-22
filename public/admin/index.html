@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="/assets/styles.css">
+<link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
 
@@ -21,9 +21,9 @@
   </header>
 
   <nav class="abas nao-imprime">
-    <a class="aba ativa" href="/admin">QR Code</a>
-    <a class="aba" href="/admin/nfc">Gravar NFC</a>
-    <a class="aba" href="/" >Página inicial</a>
+    <a class="aba ativa" href="../admin/">QR Code</a>
+    <a class="aba" href="../admin/nfc">Gravar NFC</a>
+    <a class="aba" href="../" >Página inicial</a>
   </nav>
 
   <div class="aviso nao-imprime" id="aviso-topo">
@@ -60,8 +60,8 @@
 <footer class="rodape nao-imprime">Ouzadia · painel interno</footer>
 
 <script type="module">
-import { carregarRegistro, urlDoCartao, escapar } from "/assets/app.js";
-import { svgDoQr } from "/assets/qr.js";
+import { carregarRegistro, urlDoCartao, escapar } from "../assets/app.js";
+import { svgDoQr } from "../assets/qr.js";
 
 const $ = (id) => document.getElementById(id);
 
